@@ -8,4 +8,11 @@
         <!-- 背景环的颜色 -->
         <attr name="mpc_default_color" format="color" />
     </declare-styleable>
+
+    <declare-styleable name="magic_progress_bar">
+        <attr name="mpb_percent" format="float" />
+        <attr name="mpb_fill_color" format="color" />
+        <attr name="mpb_default_color" format="color" />
+    </declare-styleable>
+
 </resources>
