@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="mpc_start_color">#FF00FFED</color>
+    <color name="mpc_end_color">#FFED00FF</color>
+    <!-- 没有被渐变填充区域的颜色 -->
+    <color name="mpc_default_color">#1AFFFFFF</color>
+</resources>
