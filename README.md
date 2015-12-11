@@ -26,4 +26,4 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ```
 
-[demo_gif]: https://github.com/lingochamp/MagicProgressWidge/raw/master/art/demo.gif
+[demo_gif]: https://github.com/Jacksgong/MagicProgressWidget/raw/master/art/demo.gif
