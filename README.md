@@ -4,7 +4,15 @@
 
 > 渐变的圆形进度条与轻量原型进度条
 
-# LICENSE
+## I. 最终效果
+
+![demo][demo_png]
+
+---
+
+![demo gif][demo_gif]
+
+## II. LICENSE
 
 ```
 Copyright (c) 2015 LingoChamp Inc.
@@ -21,3 +29,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ```
+
+[demo_png]: https://git.llsapp.com/Jacksgong/MagicProgressWidget/raw/master/art/demo.png
+[demo_gif]: https://git.llsapp.com/Jacksgong/MagicProgressWidget/raw/master/art/demo.gif
+
