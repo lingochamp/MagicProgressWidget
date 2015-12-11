@@ -8,6 +8,7 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.os.Build;
 import android.support.annotation.ColorInt;
+import android.support.annotation.FloatRange;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -30,7 +31,7 @@ public class MagicProgressBar extends View {
     private Paint fillPaint;
     private Paint backgroundPaint;
 
-    private float fillPercent = 0.8f;
+    private float percent;
 
     public MagicProgressBar(Context context) {
         super(context);
@@ -62,7 +63,7 @@ public class MagicProgressBar extends View {
         TypedArray typedArray = null;
         try {
             typedArray = context.obtainStyledAttributes(attrs, R.styleable.magic_progress_bar);
-            fillPercent = typedArray.getFloat(R.styleable.magic_progress_bar_mpb_percent, 0);
+            percent = typedArray.getFloat(R.styleable.magic_progress_bar_mpb_percent, 0);
             fillColor = typedArray.getColor(R.styleable.magic_progress_bar_mpb_fill_color, 0);
             backgroundColor = typedArray.getColor(R.styleable.magic_progress_bar_mpb_default_color, 0);
         } finally {
@@ -81,12 +82,12 @@ public class MagicProgressBar extends View {
 
     }
 
-    public float getFillPercent() {
-        return this.fillPercent;
+    public float getPercent() {
+        return this.percent;
     }
 
-    public void setFillPercent(final float fillPercent) {
-        this.fillPercent = fillPercent;
+    public void setPercent(@FloatRange(from = 0.0, to = 1.0) final float percent) {
+        this.percent = percent;
         invalidate();
     }
 
@@ -94,7 +95,7 @@ public class MagicProgressBar extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        float drawPercent = fillPercent;
+        float drawPercent = percent;
 
         canvas.save();
         final int height = getMeasuredHeight() - getPaddingTop() - getPaddingBottom();
