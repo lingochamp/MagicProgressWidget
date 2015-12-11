@@ -91,7 +91,7 @@ public class MagicProgressBar extends View {
         invalidate();
     }
 
-    private RectF rectF = new RectF();
+    private final RectF rectF = new RectF();
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
