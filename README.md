@@ -6,10 +6,6 @@
 
 ## I. 最终效果
 
-![demo][demo_png]
-
----
-
 ![demo gif][demo_gif]
 
 ## II. LICENSE
@@ -32,4 +28,3 @@ limitations under the License.
 
 [demo_png]: https://git.llsapp.com/Jacksgong/MagicProgressWidget/raw/master/art/demo.png
 [demo_gif]: https://git.llsapp.com/Jacksgong/MagicProgressWidget/raw/master/art/demo.gif
-
