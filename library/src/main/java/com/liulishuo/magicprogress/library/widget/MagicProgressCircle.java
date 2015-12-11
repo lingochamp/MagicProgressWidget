@@ -79,12 +79,12 @@ public class MagicProgressCircle extends View {
 
             TypedArray typedArray = null;
             try {
-                typedArray = context.obtainStyledAttributes(attrs, R.styleable.magic_progress_circle);
-                percent = typedArray.getFloat(R.styleable.magic_progress_circle_mpc_circle_percent, defaultPercent);
-                strokeWidth = (int) typedArray.getDimension(R.styleable.magic_progress_circle_mpc_stroke_width, (float) ViewUtil.dp2px(getContext(), 18));
-                startColor = typedArray.getColor(R.styleable.magic_progress_circle_mpc_start_color, getResources().getColor(R.color.mpc_start_color));
-                endColor = typedArray.getColor(R.styleable.magic_progress_circle_mpc_end_color, getResources().getColor(R.color.mpc_end_color));
-                defaultColor = typedArray.getColor(R.styleable.magic_progress_circle_mpc_default_color, getResources().getColor(R.color.mpc_default_color));
+                typedArray = context.obtainStyledAttributes(attrs, R.styleable.MagicProgressCircle);
+                percent = typedArray.getFloat(R.styleable.MagicProgressCircle_mpc_percent, defaultPercent);
+                strokeWidth = (int) typedArray.getDimension(R.styleable.MagicProgressCircle_mpc_stroke_width, (float) ViewUtil.dp2px(getContext(), 18));
+                startColor = typedArray.getColor(R.styleable.MagicProgressCircle_mpc_start_color, getResources().getColor(R.color.mpc_start_color));
+                endColor = typedArray.getColor(R.styleable.MagicProgressCircle_mpc_end_color, getResources().getColor(R.color.mpc_end_color));
+                defaultColor = typedArray.getColor(R.styleable.MagicProgressCircle_mpc_default_color, getResources().getColor(R.color.mpc_default_color));
             } finally {
                 if (typedArray != null) {
                     typedArray.recycle();

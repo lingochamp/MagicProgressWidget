@@ -62,10 +62,10 @@ public class MagicProgressBar extends View {
 
         TypedArray typedArray = null;
         try {
-            typedArray = context.obtainStyledAttributes(attrs, R.styleable.magic_progress_bar);
-            percent = typedArray.getFloat(R.styleable.magic_progress_bar_mpb_percent, 0);
-            fillColor = typedArray.getColor(R.styleable.magic_progress_bar_mpb_fill_color, 0);
-            backgroundColor = typedArray.getColor(R.styleable.magic_progress_bar_mpb_default_color, 0);
+            typedArray = context.obtainStyledAttributes(attrs, R.styleable.MagicProgressBar);
+            percent = typedArray.getFloat(R.styleable.MagicProgressBar_mpb_percent, 0);
+            fillColor = typedArray.getColor(R.styleable.MagicProgressBar_mpb_color, 0);
+            backgroundColor = typedArray.getColor(R.styleable.MagicProgressBar_mpb_default_color, 0);
         } finally {
             if (typedArray != null) {
                 typedArray.recycle();
