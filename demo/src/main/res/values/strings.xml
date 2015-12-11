@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MagicProgressWidget</string>
+    <string name="app_github">GitHub</string>
 </resources>
