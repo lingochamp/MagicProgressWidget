@@ -173,7 +173,7 @@ public class MagicProgressCircle extends View {
     private Paint endPaint;
 
 
-    private RectF rectF = new RectF();
+    private final RectF rectF = new RectF();
 
     private int[] customColors;
     private int[] fullColors;
