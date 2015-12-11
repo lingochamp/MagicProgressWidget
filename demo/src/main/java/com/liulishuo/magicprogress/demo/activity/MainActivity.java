@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         anim();
     }
 
-    private Random random = new Random();
+    private final Random random = new Random();
 
     private void anim() {
         final int score = random.nextInt(101);
