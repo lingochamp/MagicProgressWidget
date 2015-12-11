@@ -1,9 +1,11 @@
-package com.liulishuo.magicprogress.demo;
+package com.liulishuo.magicprogress.demo.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.liulishuo.magicprogress.demo.R;
 
 /**
  * Created by Jacksgong on 12/10/15.
@@ -14,6 +16,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
+
+    private void anim(){
 
     }
 
