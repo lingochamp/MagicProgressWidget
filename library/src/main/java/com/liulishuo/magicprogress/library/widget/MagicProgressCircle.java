@@ -1,5 +1,6 @@
 package com.liulishuo.magicprogress.library.widget;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -14,7 +15,6 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.liulishuo.magicprogress.library.R;
-import com.liulishuo.magicprogress.library.util.ViewUtil;
 
 
 /**
@@ -36,7 +36,6 @@ public class MagicProgressCircle extends View {
 
     // 用于渐变
     private Paint paint;
-    private SweepGradient sweepGradient;
 
 
     public MagicProgressCircle(Context context) {
@@ -68,8 +67,9 @@ public class MagicProgressCircle extends View {
         }
 
         do {
+            final int strokeWdithDefaultValue = (int) (18 * getResources().getDisplayMetrics().density + 0.5f);
             if (context == null || attrs == null) {
-                strokeWidth = ViewUtil.dp2px(getContext(), 18);
+                strokeWidth = strokeWdithDefaultValue;
                 percent = defaultPercent;
                 startColor = getResources().getColor(R.color.mpc_start_color);
                 endColor = getResources().getColor(R.color.mpc_end_color);
@@ -81,7 +81,7 @@ public class MagicProgressCircle extends View {
             try {
                 typedArray = context.obtainStyledAttributes(attrs, R.styleable.MagicProgressCircle);
                 percent = typedArray.getFloat(R.styleable.MagicProgressCircle_mpc_percent, defaultPercent);
-                strokeWidth = (int) typedArray.getDimension(R.styleable.MagicProgressCircle_mpc_stroke_width, (float) ViewUtil.dp2px(getContext(), 18));
+                strokeWidth = (int) typedArray.getDimension(R.styleable.MagicProgressCircle_mpc_stroke_width, strokeWdithDefaultValue);
                 startColor = typedArray.getColor(R.styleable.MagicProgressCircle_mpc_start_color, getResources().getColor(R.color.mpc_start_color));
                 endColor = typedArray.getColor(R.styleable.MagicProgressCircle_mpc_end_color, getResources().getColor(R.color.mpc_end_color));
                 defaultColor = typedArray.getColor(R.styleable.MagicProgressCircle_mpc_default_color, getResources().getColor(R.color.mpc_default_color));
@@ -125,6 +125,17 @@ public class MagicProgressCircle extends View {
 
         calculatePercentEndColor(percent);
         endPaint.setColor(percentEndColor);
+
+
+        customColors = new int[]{startColor, percentEndColor, defaultColor, defaultColor};
+        fullColors = new int[]{startColor, endColor};
+        emptyColors = new int[]{defaultColor, defaultColor};
+
+        customPositions = new float[4];
+        customPositions[0] = 0;
+        customPositions[3] = 1;
+
+        extremePositions = new float[]{0, 1};
     }
 
     public void setPercent(@FloatRange(from = 0.0, to = 1.0) final float percent) {
@@ -148,10 +159,31 @@ public class MagicProgressCircle extends View {
                 ((int) (deltaB * percent + startB)) + 0xFF000000;
     }
 
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+
+        this.rectF.left = getMeasuredWidth() / 2 - strokeWidth / 2;
+        this.rectF.top = 0;
+        this.rectF.right = getMeasuredWidth() / 2 + strokeWidth / 2;
+        this.rectF.bottom = strokeWidth;
+    }
+
     private Paint startPaint;
     private Paint endPaint;
 
 
+    private RectF rectF = new RectF();
+
+    private int[] customColors;
+    private int[] fullColors;
+    private int[] emptyColors;
+    private float[] customPositions;
+    private float[] extremePositions;
+
+
+    // 目前由于SweepGradient赋值只在构造函数，无法pre allocate & reuse instead
+    @SuppressLint("DrawAllocation")
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -175,35 +207,38 @@ public class MagicProgressCircle extends View {
         float[] positions;
         if (drawPercent < 1 && drawPercent > 0) {
             calculatePercentEndColor(drawPercent);
-            colors = new int[]{startColor, percentEndColor, defaultColor, defaultColor};
-            positions = new float[]{0, drawPercent, drawPercent, 1};
+            customColors[1] = percentEndColor;
+            colors = customColors;
+            customPositions[1] = drawPercent;
+            customPositions[2] = drawPercent;
+            positions = customPositions;
         } else if (drawPercent == 1) {
-            colors = new int[]{startColor, endColor};
-            positions = new float[]{0, 1};
+            colors = fullColors;
+            positions = extremePositions;
         } else {
-            // < 0 || > 1?
-            colors = new int[]{defaultColor, defaultColor};
-            positions = new float[]{0, 1};
+            // <= 0 || > 1?
+            colors = emptyColors;
+            positions = extremePositions;
         }
-        sweepGradient = new SweepGradient(getMeasuredWidth() / 2, getMeasuredHeight() / 2, colors, positions);
+        final SweepGradient sweepGradient = new SweepGradient(getMeasuredWidth() / 2, getMeasuredHeight() / 2, colors, positions);
         paint.setShader(sweepGradient);
         canvas.drawCircle(cx, cy, radius, paint);
         canvas.restore();
 
         if (drawPercent > 0) {
-            RectF startRectF = new RectF(getMeasuredWidth() / 2 - strokeWidth / 2, 0, getMeasuredWidth() / 2 + strokeWidth / 2, strokeWidth);
+
             // 绘制结束的半圆
             if (drawPercent < 1) {
                 canvas.save();
                 canvas.rotate((int) Math.floor(360.0f * drawPercent) - 1, cx, cy);
-                canvas.drawArc(startRectF, -90f, 180f, true, endPaint);
+                canvas.drawArc(rectF, -90f, 180f, true, endPaint);
                 canvas.restore();
             }
 
 
             canvas.save();
             // 绘制开始的半圆
-            canvas.drawArc(startRectF, 90f, 180f, true, startPaint);
+            canvas.drawArc(rectF, 90f, 180f, true, startPaint);
             canvas.restore();
 
         }
