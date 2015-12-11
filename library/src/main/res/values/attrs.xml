@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="magic_progress_circle">
-        <attr name="mpc_circle_percent" format="float" />
+    <declare-styleable name="MagicProgressCircle">
+        <attr name="mpc_percent" format="float" />
         <attr name="mpc_stroke_width" format="dimension" />
         <attr name="mpc_start_color" format="color" />
         <attr name="mpc_end_color" format="color" />
@@ -9,9 +9,9 @@
         <attr name="mpc_default_color" format="color" />
     </declare-styleable>
 
-    <declare-styleable name="magic_progress_bar">
+    <declare-styleable name="MagicProgressBar">
         <attr name="mpb_percent" format="float" />
-        <attr name="mpb_fill_color" format="color" />
+        <attr name="mpb_color" format="color" />
         <attr name="mpb_default_color" format="color" />
     </declare-styleable>
 
