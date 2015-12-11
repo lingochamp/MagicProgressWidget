@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:myattr="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black_thin"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="30dp">
+
+        <com.liulishuo.magicprogress.library.widget.MagicProgressCircle
+            android:id="@+id/demo_mpc"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            myattr:mpc_stroke_width="18dp" />
+
+        <TextView
+            android:id="@+id/demo_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="0"
+            android:textColor="@color/white_20"
+            android:textSize="36dp" />
+    </RelativeLayout>
+
+
+    <com.liulishuo.magicprogress.library.widget.MagicProgressBar
+        android:id="@+id/demo_1_mpb"
+        style="@style/demo_progress_bar"
+        android:layout_marginTop="30dp"
+        myattr:mpb_default_color="#1AFFFFFF"
+        myattr:mpb_fill_color="#FF1CECBE"
+        myattr:mpb_percent="0.6" />
+
+    <com.liulishuo.magicprogress.library.widget.MagicProgressBar
+        android:id="@+id/demo_2_mpb"
+        style="@style/demo_progress_bar"
+        myattr:mpb_default_color="#1AFFFFFF"
+        myattr:mpb_fill_color="#FFFF493D"
+        myattr:mpb_percent="0.4" />
+
+    <com.liulishuo.magicprogress.library.widget.MagicProgressBar
+        android:id="@+id/demo_3_mpb"
+        style="@style/demo_progress_bar"
+        myattr:mpb_default_color="#1AFFFFFF"
+        myattr:mpb_fill_color="#FFF141B4"
+        myattr:mpb_percent="0.8" />
+
+    <com.liulishuo.magicprogress.library.widget.MagicProgressBar
+        android:id="@+id/demo_4_mpb"
+        style="@style/demo_progress_bar"
+        myattr:mpb_default_color="#1AFFFFFF"
+        myattr:mpb_fill_color="#FF86E50E"
+        myattr:mpb_percent="0.3" />
+
+
+</LinearLayout>
