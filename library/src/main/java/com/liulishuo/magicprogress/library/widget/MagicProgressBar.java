@@ -91,6 +91,7 @@ public class MagicProgressBar extends View {
         invalidate();
     }
 
+    private RectF rectF = new RectF();
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -105,7 +106,10 @@ public class MagicProgressBar extends View {
         final float radius = height / 2.0f;
 
 
-        RectF rectF = new RectF(0, 0, width, height);
+        rectF.left = 0;
+        rectF.top = 0;
+        rectF.right = width;
+        rectF.bottom = height;
 
         // draw background
         if (backgroundColor != 0) {
