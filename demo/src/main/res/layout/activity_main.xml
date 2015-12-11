@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:myattr="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black_thin"
@@ -17,7 +17,7 @@
             android:id="@+id/demo_mpc"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            myattr:mpc_stroke_width="18dp" />
+            app:mpc_stroke_width="18dp" />
 
         <com.liulishuo.magicprogress.demo.widget.AnimTextView
             android:id="@+id/demo_tv"
@@ -34,30 +34,26 @@
         android:id="@+id/demo_1_mpb"
         style="@style/demo_progress_bar"
         android:layout_marginTop="30dp"
-        myattr:mpb_default_color="#1AFFFFFF"
-        myattr:mpb_fill_color="#FF1CECBE"
-        myattr:mpb_percent="0.6" />
+        app:mpb_default_color="#1AFFFFFF"
+        app:mpb_color="#FF1CECBE" />
 
     <com.liulishuo.magicprogress.library.widget.MagicProgressBar
         android:id="@+id/demo_2_mpb"
         style="@style/demo_progress_bar"
-        myattr:mpb_default_color="#1AFFFFFF"
-        myattr:mpb_fill_color="#FFFF493D"
-        myattr:mpb_percent="0.4" />
+        app:mpb_color="#FFFF493D"
+        app:mpb_default_color="#1AFFFFFF" />
 
     <com.liulishuo.magicprogress.library.widget.MagicProgressBar
         android:id="@+id/demo_3_mpb"
         style="@style/demo_progress_bar"
-        myattr:mpb_default_color="#1AFFFFFF"
-        myattr:mpb_fill_color="#FFF141B4"
-        myattr:mpb_percent="0.8" />
+        app:mpb_color="#FFF141B4"
+        app:mpb_default_color="#1AFFFFFF" />
 
     <com.liulishuo.magicprogress.library.widget.MagicProgressBar
         android:id="@+id/demo_4_mpb"
         style="@style/demo_progress_bar"
-        myattr:mpb_default_color="#1AFFFFFF"
-        myattr:mpb_fill_color="#FF86E50E"
-        myattr:mpb_percent="0.3" />
+        app:mpb_default_color="#1AFFFFFF"
+        app:mpb_color="#FF86E50E" />
 
 
 </LinearLayout>
