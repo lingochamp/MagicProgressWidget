@@ -4,7 +4,7 @@
 
 [![Download][bintray_svg]][bintray_link]
 
-> 渐变的圆形进度条与轻量进度g条
+> 渐变的圆形进度条与轻量横向进度条
 
 ## I. 最终效果
 
