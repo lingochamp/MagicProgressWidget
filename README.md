@@ -2,6 +2,8 @@
 
 ---
 
+[![Download](bintray_svg)](bintray_link)
+
 > 渐变的圆形进度条与轻量进度条
 
 ## I. 最终效果
@@ -27,3 +29,5 @@ limitations under the License.
 ```
 
 [demo_gif]: https://github.com/lingochamp/MagicProgressWidget/raw/master/art/demo.gif
+[bintray_svg]: https://api.bintray.com/packages/jacksgong/maven/MagicProgressWidget/images/download.svg
+[bintray_link]: https://bintray.com/jacksgong/maven/MagicProgressWidget/_latestVersion
