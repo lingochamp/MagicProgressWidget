@@ -33,13 +33,13 @@
 
 #### 1. Magic Progress Circle
 
-参数 | 含义 | 默认值
-:-: | :- | :-
-mpc_percent | 填充的百分比[0, 1] | 0
-mpc_stroke_width | 描边宽度 | 18dp
-mpc_start_color | 渐变颜色起点颜色(percent=0) | <font color="#FF00FFED">#FF00FFED</font>
-mpc_end_color | 渐变颜色终点颜色(percent=1) | <font color="#FFED00FF">#FFED00FF</font>
-mpc_default_color | 未填充部分的描边的颜色 | <font color="#1AFFFFFF">#1AFFFFFF</font>
+| 参数 | 含义 | 默认值
+| :-: | :- | :-
+| mpc_percent | 填充的百分比[0, 1] | 0
+| mpc_stroke_width | 描边宽度 | 18dp
+| mpc_start_color | 渐变颜色起点颜色(percent=0) | <font color="#FF00FFED">#FF00FFED</font>
+| mpc_end_color | 渐变颜色终点颜色(percent=1) | <font color="#FFED00FF">#FFED00FF</font>
+| mpc_default_color | 未填充部分的描边的颜色 | <font color="#1AFFFFFF">#1AFFFFFF</font>
 
 #### 2. Magic Progress Bar
 
