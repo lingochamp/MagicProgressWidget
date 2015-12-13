@@ -1,4 +1,4 @@
-package com.liulishuo.magicprogress.library.widget;
+package com.liulishuo.magicprogresswidget;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -11,8 +11,6 @@ import android.support.annotation.ColorInt;
 import android.support.annotation.FloatRange;
 import android.util.AttributeSet;
 import android.view.View;
-
-import com.liulishuo.magicprogress.library.R;
 
 
 /**

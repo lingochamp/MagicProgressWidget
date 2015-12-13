@@ -12,7 +12,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_margin="30dp">
 
-        <com.liulishuo.magicprogress.library.widget.MagicProgressCircle
+        <com.liulishuo.magicprogresswidget.MagicProgressCircle
             android:id="@+id/demo_mpc"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -29,26 +29,26 @@
     </RelativeLayout>
 
 
-    <com.liulishuo.magicprogress.library.widget.MagicProgressBar
+    <com.liulishuo.magicprogresswidget.MagicProgressBar
         android:id="@+id/demo_1_mpb"
         style="@style/demo_progress_bar"
         android:layout_marginTop="30dp"
         app:mpb_default_color="#1AFFFFFF"
         app:mpb_color="#FF1CECBE" />
 
-    <com.liulishuo.magicprogress.library.widget.MagicProgressBar
+    <com.liulishuo.magicprogresswidget.MagicProgressBar
         android:id="@+id/demo_2_mpb"
         style="@style/demo_progress_bar"
         app:mpb_color="#FFFF493D"
         app:mpb_default_color="#1AFFFFFF" />
 
-    <com.liulishuo.magicprogress.library.widget.MagicProgressBar
+    <com.liulishuo.magicprogresswidget.MagicProgressBar
         android:id="@+id/demo_3_mpb"
         style="@style/demo_progress_bar"
         app:mpb_color="#FFF141B4"
         app:mpb_default_color="#1AFFFFFF" />
 
-    <com.liulishuo.magicprogress.library.widget.MagicProgressBar
+    <com.liulishuo.magicprogresswidget.MagicProgressBar
         android:id="@+id/demo_4_mpb"
         style="@style/demo_progress_bar"
         app:mpb_default_color="#1AFFFFFF"
