@@ -12,8 +12,8 @@ import android.view.animation.AccelerateInterpolator;
 
 import com.liulishuo.magicprogress.demo.R;
 import com.liulishuo.magicprogress.demo.widget.AnimTextView;
-import com.liulishuo.magicprogress.library.widget.MagicProgressBar;
-import com.liulishuo.magicprogress.library.widget.MagicProgressCircle;
+import com.liulishuo.magicprogresswidget.MagicProgressBar;
+import com.liulishuo.magicprogresswidget.MagicProgressCircle;
 
 import java.util.Random;
 
