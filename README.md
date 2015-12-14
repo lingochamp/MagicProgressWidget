@@ -10,6 +10,12 @@
 
 ## II. 如何使用
 
+`build.gradle`中配置:
+
+```
+compile 'com.liulishuo.magicprogresswidget:library:1.0.1'
+```
+
 > 建议参考github中的demo
 
 ```
