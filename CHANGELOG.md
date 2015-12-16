@@ -1,6 +1,10 @@
 # Change Log
 ---
 
+### Version 1.0.2
+
+- library删除对v7的引用
+
 ### Version 1.0.1
 
 - 规范包名
