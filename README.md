@@ -13,7 +13,7 @@
 `build.gradle`中配置:
 
 ```
-compile 'com.liulishuo.magicprogresswidget:library:1.0.1'
+compile 'com.liulishuo.magicprogresswidget:library:1.0.2'
 ```
 
 > 建议参考github中的demo
