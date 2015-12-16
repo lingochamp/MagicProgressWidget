@@ -9,8 +9,6 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.SweepGradient;
 import android.os.Build;
-import android.support.annotation.ColorInt;
-import android.support.annotation.FloatRange;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -34,11 +32,11 @@ import android.view.View;
  */
 public class MagicProgressCircle extends View {
 
-    @ColorInt
+    // ColorInt
     private int startColor;
-    @ColorInt
+    // ColorInt
     private int endColor;
-    @ColorInt
+    // ColorInt
     private int defaultColor;
 
     private int percentEndColor;
@@ -150,7 +148,11 @@ public class MagicProgressCircle extends View {
         extremePositions = new float[]{0, 1};
     }
 
-    public void setPercent(@FloatRange(from = 0.0, to = 1.0) final float percent) {
+    /**
+     *
+     * @param percent FloatRange(from = 0.0, to = 1.0)
+     */
+    public void setPercent(final float percent) {
         this.percent = percent;
         calculatePercentEndColor(percent);
         endPaint.setColor(percentEndColor);

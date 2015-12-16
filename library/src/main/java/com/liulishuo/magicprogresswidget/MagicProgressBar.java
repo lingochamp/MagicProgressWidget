@@ -7,8 +7,6 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.os.Build;
-import android.support.annotation.ColorInt;
-import android.support.annotation.FloatRange;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -34,10 +32,10 @@ import android.view.View;
  */
 public class MagicProgressBar extends View {
 
-    @ColorInt
+    // ColorInt
     private int fillColor;
 
-    @ColorInt
+    // ColorInt
     private int backgroundColor;
 
     private Paint fillPaint;
@@ -98,7 +96,11 @@ public class MagicProgressBar extends View {
         return this.percent;
     }
 
-    public void setPercent(@FloatRange(from = 0.0, to = 1.0) final float percent) {
+    /**
+     *
+     * @param percent FloatRange(from = 0.0, to = 1.0)
+     */
+    public void setPercent(final float percent) {
         this.percent = percent;
         invalidate();
     }

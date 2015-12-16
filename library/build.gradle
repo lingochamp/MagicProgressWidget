@@ -5,7 +5,7 @@ android {
     buildToolsVersion BUILD_TOOLS_VERSION
 
     defaultConfig {
-        minSdkVersion 8
+        minSdkVersion 3
         targetSdkVersion COMPILE_SDK_VERSION as int
         versionCode VERSION_CODE as int
         versionName VERSION_NAME
@@ -24,10 +24,3 @@ if (isForUpload2Maven()) {
     apply from: 'https://raw.githubusercontent.com/Jacksgong/JCenter/master/bintrayv1.gradle'
     apply from: 'https://raw.githubusercontent.com/Jacksgong/JCenter/master/license.gradle'
 }
-
-dependencies {
-    compile 'com.android.support:appcompat-v7:23.1.1'
-}
-
-
-
