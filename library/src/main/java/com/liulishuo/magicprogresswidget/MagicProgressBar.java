@@ -1,16 +1,3 @@
-package com.liulishuo.magicprogresswidget;
-
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.content.res.TypedArray;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.RectF;
-import android.os.Build;
-import android.util.AttributeSet;
-import android.view.View;
-
-
 /**
  * Copyright (c) 2015 LingoChamp Inc.
  *
@@ -25,9 +12,23 @@ import android.view.View;
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
+ */
+package com.liulishuo.magicprogresswidget;
+
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.RectF;
+import android.os.Build;
+import android.util.AttributeSet;
+import android.view.View;
+
+
+/**
  * Created by Jacksgong on 12/8/15.
- *
+ * <p/>
  * 轻量的ProgressBar
  */
 public class MagicProgressBar extends View {
