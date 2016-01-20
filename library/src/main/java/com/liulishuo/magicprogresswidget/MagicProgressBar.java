@@ -20,6 +20,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.RectF;
 import android.os.Build;
 import android.util.AttributeSet;
@@ -137,6 +138,7 @@ public class MagicProgressBar extends View {
     }
 
     private final RectF rectF = new RectF();
+    private final Path fillPath = new Path();
 
     @Override
     protected void onDraw(Canvas canvas) {
@@ -164,9 +166,24 @@ public class MagicProgressBar extends View {
 
 
         // draw fill
-        if (fillColor != 0) {
-            rectF.right = fillWidth;
-            canvas.drawRoundRect(rectF, radius, radius, fillPaint);
+        if (fillColor != 0 && fillWidth > 0) {
+            float currentX = drawPercent * width;
+
+            if (radius > currentX / 2) {
+
+                fillPath.reset();
+                // 180 * percent
+                float targetArc = 180 * currentX / radius;
+                float delta = (180 - targetArc) / 2;
+                rectF.right = radius * 2;
+                fillPath.addArc(rectF, delta + 90, targetArc);
+                fillPath.close();
+                canvas.drawPath(fillPath, fillPaint);
+
+            } else {
+                rectF.right = fillWidth;
+                canvas.drawRoundRect(rectF, radius, radius, fillPaint);
+            }
         }
 
         canvas.restore();
