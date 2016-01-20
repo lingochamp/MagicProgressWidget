@@ -122,20 +122,8 @@ public class MagicProgressCircle extends View {
         endPaint.setAntiAlias(true);
         endPaint.setStyle(Paint.Style.FILL);
 
-        int endR = (endColor & 0xFF0000) >> 16;
-        int endG = (endColor & 0xFF00) >> 8;
-        int endB = (endColor & 0xFF);
+        refreshDelta();
 
-        this.startR = (startColor & 0xFF0000) >> 16;
-        this.startG = (startColor & 0xFF00) >> 8;
-        this.startB = (startColor & 0xFF);
-
-        deltaR = endR - startR;
-        deltaG = endG - startG;
-        deltaB = endB - startB;
-
-        calculatePercentEndColor(percent);
-        endPaint.setColor(percentEndColor);
 
 
         customColors = new int[]{startColor, percentEndColor, defaultColor, defaultColor};
@@ -149,8 +137,21 @@ public class MagicProgressCircle extends View {
         extremePositions = new float[]{0, 1};
     }
 
+    private void refreshDelta() {
+        int endR = (endColor & 0xFF0000) >> 16;
+        int endG = (endColor & 0xFF00) >> 8;
+        int endB = (endColor & 0xFF);
+
+        this.startR = (startColor & 0xFF0000) >> 16;
+        this.startG = (startColor & 0xFF00) >> 8;
+        this.startB = (startColor & 0xFF);
+
+        deltaR = endR - startR;
+        deltaG = endG - startG;
+        deltaB = endB - startB;
+    }
+
     /**
-     *
      * @param percent FloatRange(from = 0.0, to = 1.0)
      */
     public void setPercent(final float percent) {
@@ -161,6 +162,95 @@ public class MagicProgressCircle extends View {
 
     public float getPercent() {
         return this.percent;
+    }
+
+    /**
+     * @param color ColorInt
+     */
+    public void setStartColor(final int color) {
+        if (this.startColor != color) {
+            this.startColor = color;
+            // delta变化
+            refreshDelta();
+
+            // 渐变前部分
+            customColors[0] = color;
+            // 前半圆
+            startPaint.setColor(color);
+            // 全满时 渐变起点
+            fullColors[0] = color;
+
+            invalidate();
+        }
+    }
+
+    public int getStartColor() {
+        return this.startColor;
+    }
+
+    /**
+     * @param color ColorInt
+     */
+    public void setEndColor(final int color) {
+        if (this.endColor != color) {
+            this.endColor = color;
+            // delta变化
+            refreshDelta();
+
+            // 渐变后部分 动态计算#draw
+            // 后半圆 需要动态计算#draw，在某些情况下没有
+
+            // 全满时 渐变结束
+            fullColors[1] = color;
+
+
+            invalidate();
+        }
+    }
+
+    public int getEndColor() {
+        return this.endColor;
+    }
+
+    /**
+     * @param color ColorInt
+     */
+    public void setDefaultColor(final int color) {
+        if (this.defaultColor != color) {
+            this.defaultColor = color;
+
+            // 渐变后半部分
+            customColors[2] = color;
+            customColors[3] = color;
+
+            // percent = 0
+            emptyColors[0] = color;
+            emptyColors[1] = color;
+
+            invalidate();
+        }
+    }
+
+    public int getDefaultColor() {
+        return this.defaultColor;
+    }
+
+    /**
+     * @param width px
+     */
+    public void setStrokeWidth(final int width) {
+        if (this.strokeWidth != width) {
+            this.strokeWidth = width;
+            // 画描边的描边变化
+            paint.setStrokeWidth(width);
+
+            // 会影响measure
+            requestLayout();
+        }
+    }
+
+    public int getStrokeWidth() {
+        return this.strokeWidth;
     }
 
     private int deltaR, deltaB, deltaG;
