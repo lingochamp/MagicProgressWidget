@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2015 LingoChamp Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -93,12 +93,42 @@ public class MagicProgressBar extends View {
 
     }
 
+    /**
+     * @param fillColor ColorInt
+     */
+    public void setFillColor(final int fillColor) {
+        if (this.fillColor != fillColor) {
+            this.fillColor = fillColor;
+            this.fillPaint.setColor(fillColor);
+            invalidate();
+        }
+
+    }
+
+    /**
+     * @param backgroundColor ColorInt
+     */
+    public void setBackgroundColor(final int backgroundColor) {
+        if (this.backgroundColor != backgroundColor) {
+            this.backgroundColor = backgroundColor;
+            this.backgroundPaint.setColor(backgroundColor);
+            invalidate();
+        }
+    }
+
+    public int getFillColor() {
+        return this.fillColor;
+    }
+
+    public int getBackgroundColor() {
+        return this.backgroundColor;
+    }
+
     public float getPercent() {
         return this.percent;
     }
 
     /**
-     *
      * @param percent FloatRange(from = 0.0, to = 1.0)
      */
     public void setPercent(final float percent) {
