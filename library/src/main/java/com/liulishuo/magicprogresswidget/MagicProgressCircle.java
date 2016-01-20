@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2015 LingoChamp Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -155,8 +155,6 @@ public class MagicProgressCircle extends View {
      */
     public void setPercent(final float percent) {
         this.percent = percent;
-        calculatePercentEndColor(percent);
-        endPaint.setColor(percentEndColor);
 
         invalidate();
     }
@@ -245,6 +243,7 @@ public class MagicProgressCircle extends View {
             // 绘制结束的半圆
             if (drawPercent < 1) {
                 canvas.save();
+                endPaint.setColor(percentEndColor);
                 canvas.rotate((int) Math.floor(360.0f * drawPercent) - 1, cx, cy);
                 canvas.drawArc(rectF, -90f, 180f, true, endPaint);
                 canvas.restore();
