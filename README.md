@@ -13,7 +13,7 @@
 `build.gradle`中配置:
 
 ```
-compile 'com.liulishuo.magicprogresswidget:library:1.0.2'
+compile 'com.liulishuo.magicprogresswidget:library:1.0.6'
 ```
 
 > 建议参考github中的demo
@@ -50,6 +50,13 @@ compile 'com.liulishuo.magicprogresswidget:library:1.0.2'
 #### 2. Magic Progress Bar
 
 > 相比系统的ProgressBar更加轻量，如果你的ProgressBar要求不是很复杂，推荐使用
+
+| 参数 | 含义 | 默认值 |
+| :--- | :--- | :--- |
+| mpb_percent | 填充的百分比[0, 1] | 0 |
+| mpb_fill_color | 填充进度的颜色 | 0 |
+| mpb_background_color | 进度背景的颜色 | 0 |
+| mpb_flat | 填充的进度条右侧是否是平面(不是平面就是圆弧) | false |
 
 ## III. LICENSE
 
