@@ -20,7 +20,6 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.Path;
 import android.graphics.RectF;
 import android.os.Build;
 import android.util.AttributeSet;
@@ -44,6 +43,7 @@ public class MagicProgressBar extends View {
     private Paint backgroundPaint;
 
     private float percent;
+    private boolean isFlat;
 
     public MagicProgressBar(Context context) {
         super(context);
@@ -78,6 +78,7 @@ public class MagicProgressBar extends View {
             percent = typedArray.getFloat(R.styleable.MagicProgressBar_mpb_percent, 0);
             fillColor = typedArray.getColor(R.styleable.MagicProgressBar_mpb_color, 0);
             backgroundColor = typedArray.getColor(R.styleable.MagicProgressBar_mpb_default_color, 0);
+            isFlat = typedArray.getBoolean(R.styleable.MagicProgressBar_mpb_flat, false);
         } finally {
             if (typedArray != null) {
                 typedArray.recycle();
@@ -137,8 +138,20 @@ public class MagicProgressBar extends View {
         invalidate();
     }
 
+    /**
+     * @param flat Whether the right side of progress is round or flat
+     */
+    public void setFlat(final boolean flat) {
+        if (this.isFlat != flat) {
+            this.isFlat = flat;
+
+            invalidate();
+        }
+    }
+
     private final RectF rectF = new RectF();
-    private final Path fillPath = new Path();
+//    private final Path regionPath = new Path();
+//    private final Path fillPath = new Path();
 
     @Override
     protected void onDraw(Canvas canvas) {
@@ -147,10 +160,12 @@ public class MagicProgressBar extends View {
         float drawPercent = percent;
 
         canvas.save();
+
+
         final int height = getMeasuredHeight() - getPaddingTop() - getPaddingBottom();
         final int width = getMeasuredWidth() - getPaddingLeft() - getPaddingRight();
 
-        final int fillWidth = (int) (drawPercent * width);
+        float fillWidth = drawPercent * width;
         final float radius = height / 2.0f;
 
 
@@ -159,33 +174,92 @@ public class MagicProgressBar extends View {
         rectF.right = width;
         rectF.bottom = height;
 
+//        regionPath.reset();
+//        regionPath.addRoundRect(rectF, radius, radius, Path.Direction.CW);
+//        regionPath.close();
         // draw background
         if (backgroundColor != 0) {
             canvas.drawRoundRect(rectF, radius, radius, backgroundPaint);
+//            canvas.drawPath(regionPath, backgroundPaint);
         }
 
 
         // draw fill
-        if (fillColor != 0 && fillWidth > 0) {
-            float currentX = drawPercent * width;
+        try {
 
-            if (radius > currentX / 2) {
 
-                fillPath.reset();
-                // 180 * percent
-                float targetArc = 180 * currentX / radius;
-                float delta = (180 - targetArc) / 2;
-                rectF.right = radius * 2;
-                fillPath.addArc(rectF, delta + 90, targetArc);
-                fillPath.close();
-                canvas.drawPath(fillPath, fillPaint);
+            if (fillColor != 0 && fillWidth > 0) {
+                //有锯齿, 无奈放弃
+//            fillPath.reset();
+//            rectF.right = fillWidth;
+//            fillPath.addRect(rectF, Path.Direction.CW);
+//            fillPath.close();
+//            canvas.clipPath(regionPath);
+//            canvas.drawPath(fillPath, fillPaint);
+                if (fillWidth == width) {
+                    rectF.right = fillWidth;
+                    canvas.drawRoundRect(rectF, radius, radius, fillPaint);
+                    return;
+                }
 
-            } else {
-                rectF.right = fillWidth;
-                canvas.drawRoundRect(rectF, radius, radius, fillPaint);
+                if (isFlat) {
+                    // draw left semicircle
+                    drawLeftCircle(canvas, radius, fillWidth);
+                    if (fillWidth <= radius) {
+                        return;
+                    }
+
+                    float leftAreaWidth = width - radius;
+
+                    // draw center
+                    float centerX = fillWidth > leftAreaWidth ? leftAreaWidth : fillWidth;
+                    rectF.left = radius;
+                    rectF.right = centerX;
+                    canvas.drawRect(rectF, fillPaint);
+                    if (fillWidth <= leftAreaWidth) {
+                        return;
+                    }
+
+                    // draw right semicircle
+                    rectF.left = leftAreaWidth - radius;
+
+                    rectF.right = fillWidth;
+                    canvas.clipRect(rectF);
+
+                    rectF.right = width;
+                    canvas.drawArc(rectF, -90, 180, true, fillPaint);
+
+
+                } else {
+
+                    if (fillWidth <= radius * 2) {
+                        drawLeftCircle(canvas, radius, fillWidth);
+                    } else {
+                        rectF.right = fillWidth;
+                        canvas.drawRoundRect(rectF, radius, radius, fillPaint);
+                    }
+                }
+
             }
+        } finally {
+            canvas.restore();
+        }
+    }
+
+    private void drawLeftCircle(final Canvas canvas, final float radius, final float fillWidth) {
+        final float x = fillWidth < radius * 2 ? fillWidth : radius * 2;
+        // 只需要画半圆, 圆心(radius, 0),
+        final float y = (float) Math.sqrt(radius * radius - (x - radius) * (x - radius));
+        float sweepAngle = (float) (Math.asin(y / radius) / Math.PI * 180) * 2;
+        // 补角
+        if (fillWidth > radius) {
+            sweepAngle = 360 - sweepAngle;
         }
 
-        canvas.restore();
+        final float startAngle = 90 + (90 - sweepAngle / 2);
+
+        rectF.right = radius * 2;
+        canvas.drawArc(rectF, startAngle, sweepAngle, false, fillPaint);
     }
+
 }
