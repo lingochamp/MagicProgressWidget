@@ -203,14 +203,20 @@ public class MagicProgressBar extends View {
                 }
 
                 if (isFlat) {
+
                     // draw left semicircle
-                    drawLeftCircle(canvas, radius, fillWidth);
+                    canvas.save();
+                    rectF.right = fillWidth > radius ? radius : fillWidth;
+                    canvas.clipRect(rectF);
+                    rectF.right = radius * 2;
+                    canvas.drawRoundRect(rectF, radius, radius, fillPaint);
+                    canvas.restore();
+
                     if (fillWidth <= radius) {
                         return;
                     }
 
                     float leftAreaWidth = width - radius;
-
                     // draw center
                     float centerX = fillWidth > leftAreaWidth ? leftAreaWidth : fillWidth;
                     rectF.left = radius;
@@ -229,11 +235,13 @@ public class MagicProgressBar extends View {
                     rectF.right = width;
                     canvas.drawArc(rectF, -90, 180, true, fillPaint);
 
-
                 } else {
 
                     if (fillWidth <= radius * 2) {
-                        drawLeftCircle(canvas, radius, fillWidth);
+                        rectF.right = fillWidth;
+                        canvas.clipRect(rectF);
+                        rectF.right = radius * 2;
+                        canvas.drawRoundRect(rectF, radius, radius, fillPaint);
                     } else {
                         rectF.right = fillWidth;
                         canvas.drawRoundRect(rectF, radius, radius, fillPaint);
@@ -244,22 +252,6 @@ public class MagicProgressBar extends View {
         } finally {
             canvas.restore();
         }
-    }
-
-    private void drawLeftCircle(final Canvas canvas, final float radius, final float fillWidth) {
-        final float x = fillWidth < radius * 2 ? fillWidth : radius * 2;
-        // 只需要画半圆, 圆心(radius, 0),
-        final float y = (float) Math.sqrt(radius * radius - (x - radius) * (x - radius));
-        float sweepAngle = (float) (Math.asin(y / radius) / Math.PI * 180) * 2;
-        // 补角
-        if (fillWidth > radius) {
-            sweepAngle = 360 - sweepAngle;
-        }
-
-        final float startAngle = 90 + (90 - sweepAngle / 2);
-
-        rectF.right = radius * 2;
-        canvas.drawArc(rectF, startAngle, sweepAngle, false, fillPaint);
     }
 
 }
