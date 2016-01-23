@@ -20,21 +20,22 @@ compile 'com.liulishuo.magicprogresswidget:library:1.0.6'
 
 ```
 <com.liulishuo.magicprogresswidget.MagicProgressCircle
-            android:id="@+id/demo_mpc"
-            android:layout_width="@dimen/mpc_size"
-            android:layout_height="@dimen/mpc_size"
-            app:mpc_percent="0.8"
-            app:mpc_start_color="@color/mpc_start_color"
-            app:mpc_end_color="@color/mpc_end_color"
-            app:mpc_stroke_width="@dimen/mpc_stroke_width"
-            app:mpc_default_color="@color/mpc_default_color"/>
+    android:id="@+id/demo_mpc"
+    android:layout_width="@dimen/mpc_size"
+    android:layout_height="@dimen/mpc_size"
+    app:mpc_percent="0.8"
+    app:mpc_start_color="@color/mpc_start_color"
+    app:mpc_end_color="@color/mpc_end_color"
+    app:mpc_stroke_width="@dimen/mpc_stroke_width"
+    app:mpc_default_color="@color/mpc_default_color"/>
 
 <com.liulishuo.magicprogresswidget.MagicProgressBar
-                    android:id="@+id/demo_2_mpb"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/mpb_height"
-                    app:mpb_color="@color/mpb_color"
-                    app:mpb_default_color="@color/mpb_default_color"/>
+    android:id="@+id/demo_2_mpb"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/mpb_height"
+    app:mpb_fill_color="@color/mpb_color"
+    app:mpb_background_color="@color/mpb_default_color"
+    app:mpb_flat="true"/>
 ```
 
 #### 1. Magic Progress Circle
