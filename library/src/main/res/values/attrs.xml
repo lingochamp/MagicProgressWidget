@@ -11,8 +11,8 @@
 
     <declare-styleable name="MagicProgressBar">
         <attr name="mpb_percent" format="float" />
-        <attr name="mpb_color" format="color" />
-        <attr name="mpb_default_color" format="color" />
+        <attr name="mpb_fill_color" format="color" />
+        <attr name="mpb_background_color" format="color" />
         <attr name="mpb_flat" format="boolean" />
     </declare-styleable>
 
