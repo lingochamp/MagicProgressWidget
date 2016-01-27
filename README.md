@@ -1,6 +1,7 @@
 # MagicProgressWidget
 
 [![Download][bintray_svg]][bintray_link]
+[![Build Status][build_status_svg]][build_status_link]
 
 > 渐变的圆形进度条与轻量横向进度条
 
@@ -80,3 +81,5 @@ limitations under the License.
 [demo_gif]: https://github.com/lingochamp/MagicProgressWidget/raw/master/art/demo.gif
 [bintray_svg]: https://api.bintray.com/packages/jacksgong/maven/MagicProgressWidget/images/download.svg
 [bintray_link]: https://bintray.com/jacksgong/maven/MagicProgressWidget/_latestVersion
+[build_status_svg]: https://travis-ci.org/lingochamp/MagicProgressWidget.svg?branch=master
+[build_status_link]: https://travis-ci.org/lingochamp/MagicProgressWidget
