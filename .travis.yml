@@ -8,6 +8,7 @@ android:
     - extra
 
 after_script:
-    - cat /home/travis/build/lingochamp/MagicProgressWidget/library/build/outputs/lint-results.xml
+    - cat ./demo/build/outputs/lint-results.xml
+    - cat ./library/build/outputs/lint-results.xml
 
 sudo: false
