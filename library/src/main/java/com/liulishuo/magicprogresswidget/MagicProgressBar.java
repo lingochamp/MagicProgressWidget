@@ -133,9 +133,14 @@ public class MagicProgressBar extends View {
     /**
      * @param percent FloatRange(from = 0.0, to = 1.0)
      */
-    public void setPercent(final float percent) {
-        this.percent = percent;
-        invalidate();
+    public void setPercent(float percent) {
+        percent = Math.min(1, percent);
+        percent = Math.max(0, percent);
+
+        if (this.percent != percent) {
+            this.percent = percent;
+            invalidate();
+        }
     }
 
     /**
