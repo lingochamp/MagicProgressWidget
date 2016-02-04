@@ -27,14 +27,23 @@ public class AnimTextView extends TextView {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
-    private int score;
+    private int progress;
+    private int max;
 
-    public void setScore(final int score) {
-        this.score = score;
-        setText(String.valueOf(score));
+    public void setProgress(final int progress) {
+        this.progress = progress;
+        setText(String.valueOf(progress));
     }
 
-    public int getScore() {
-        return this.score;
+    public int getProgress() {
+        return this.progress;
+    }
+
+    public int getMax() {
+        return max;
+    }
+
+    public void setMax(int max) {
+        this.max = max;
     }
 }

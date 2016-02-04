@@ -7,4 +7,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="black">#FF000000</color>
     <color name="black_thin">#0D0D0E</color>
+
+    <color name="demo_btn_bg_normal">#777777</color>
+    <color name="demo_btn_bg_pressed">#666666</color>
 </resources>

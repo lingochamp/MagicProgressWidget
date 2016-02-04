@@ -1,5 +1,6 @@
 package com.liulishuo.magicprogress.demo.activity;
 
+import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 
 import com.liulishuo.magicprogress.demo.R;
@@ -16,6 +18,8 @@ import com.liulishuo.magicprogresswidget.MagicProgressBar;
 import com.liulishuo.magicprogresswidget.MagicProgressCircle;
 
 import java.util.Random;
+
+import cn.dreamtobe.percentsmoothhandler.ISmoothTarget;
 
 /**
  * Created by Jacksgong on 12/10/15.
@@ -31,25 +35,73 @@ public class MainActivity extends AppCompatActivity {
         anim();
     }
 
+    private boolean isAnimActive;
     private final Random random = new Random();
 
     private void anim() {
-        final int score = random.nextInt(101);
+        final int progress = random.nextInt(51);
 
         AnimatorSet set = new AnimatorSet();
         set.playTogether(
-                ObjectAnimator.ofFloat(demoMpc, "percent", 0, score / 100f),
-                ObjectAnimator.ofInt(demoTv, "score", 0, score),
-                ObjectAnimator.ofFloat(demo1Mpb, "percent", 0, random.nextInt(101) / 100f),
-                ObjectAnimator.ofFloat(demo2Mpb, "percent", 0, random.nextInt(101) / 100f),
-                ObjectAnimator.ofFloat(demo3Mpb, "percent", 0, random.nextInt(101) / 100f),
-                ObjectAnimator.ofFloat(demo4Mpb, "percent", 0, random.nextInt(101) / 100f)
+                ObjectAnimator.ofFloat(demoMpc, "percent", 0, progress / 100f),
+                ObjectAnimator.ofInt(demoTv, "progress", 0, progress),
+                ObjectAnimator.ofFloat(demo1Mpb, "percent", 0, random.nextInt(51) / 100f),
+                ObjectAnimator.ofFloat(demo2Mpb, "percent", 0, random.nextInt(51) / 100f),
+                ObjectAnimator.ofFloat(demo3Mpb, "percent", 0, random.nextInt(51) / 100f),
+                ObjectAnimator.ofFloat(demo4Mpb, "percent", 0, random.nextInt(51) / 100f)
         );
         set.setDuration(600);
+        set.addListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+                isAnimActive = true;
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                isAnimActive = false;
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+        });
         set.setInterpolator(new AccelerateInterpolator());
         set.start();
+    }
 
 
+    public void onReRandomPercent(final View view) {
+        if (isAnimActive) {
+            return;
+        }
+        anim();
+    }
+
+    public void onClickIncreaseSmoothly(final View view) {
+        if (isAnimActive) {
+            return;
+        }
+
+        float mpcPercent = getIncreasedPercent(demoMpc);
+        demoMpc.setSmoothPercent(mpcPercent);
+        demoTv.setText(String.valueOf((int) (mpcPercent * 100)));
+        demo1Mpb.setSmoothPercent(getIncreasedPercent(demo1Mpb));
+        demo2Mpb.setSmoothPercent(getIncreasedPercent(demo2Mpb));
+        demo3Mpb.setSmoothPercent(getIncreasedPercent(demo3Mpb));
+        demo4Mpb.setSmoothPercent(getIncreasedPercent(demo4Mpb));
+    }
+
+    private float getIncreasedPercent(ISmoothTarget target) {
+        float increasedPercent = target.getPercent() + 0.1f;
+
+        return Math.min(1, increasedPercent);
     }
 
     @Override

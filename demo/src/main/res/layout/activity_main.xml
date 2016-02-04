@@ -57,5 +57,27 @@
         app:mpb_background_color="#1AFFFFFF"
         app:mpb_fill_color="#FF86E50E" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/demo_btn_bg"
+            android:onClick="onReRandomPercent"
+            android:text="@string/re_random_percent" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/demo_btn_bg"
+            android:onClick="onClickIncreaseSmoothly"
+            android:text="@string/increase_progress_smoothly" />
+    </LinearLayout>
 
 </LinearLayout>
