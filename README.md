@@ -14,7 +14,7 @@
 `build.gradle`中配置:
 
 ```
-compile 'com.liulishuo.magicprogresswidget:library:1.0.7'
+compile 'com.liulishuo.magicprogresswidget:library:1.0.8'
 ```
 
 > 建议参考github中的demo
@@ -41,6 +41,8 @@ compile 'com.liulishuo.magicprogresswidget:library:1.0.7'
 
 #### 1. Magic Progress Circle
 
+> 支持平滑过渡: `setSmoothPercent(percent:float):void`
+
 | 参数 | 含义 | 默认值 |
 | :--- | :--- | :--- |
 | mpc_percent | 填充的百分比[0, 1] | 0 |
@@ -52,6 +54,8 @@ compile 'com.liulishuo.magicprogresswidget:library:1.0.7'
 #### 2. Magic Progress Bar
 
 > 相比系统的ProgressBar更加轻量，如果你的ProgressBar要求不是很复杂，推荐使用
+
+> 支持平滑过渡: `setSmoothPercent(percent:float):void`
 
 | 参数 | 含义 | 默认值 |
 | :--- | :--- | :--- |

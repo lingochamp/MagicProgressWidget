@@ -1,6 +1,10 @@
 # Change Log
 ---
 
+## Version 1.0.8
+
+- `MagicProgressBar`与`MagicProgressCircle`添加Smooth-Progress功能: `setSmoothPercent(percent:float):void`
+
 ## Version 1.0.7
 
 - 修复`MagicProgressBar`在进度操作左侧的左半球时，在进度条下面多画了左侧球体的右半球部分
