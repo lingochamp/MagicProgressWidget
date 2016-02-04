@@ -27,11 +27,16 @@ import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
 
+import java.lang.ref.WeakReference;
+
+import cn.dreamtobe.percentsmoothhandler.ISmoothTarget;
+import cn.dreamtobe.percentsmoothhandler.SmoothHandler;
+
 
 /**
  * Created by Jacksgong on 12/8/15.
  */
-public class MagicProgressCircle extends View {
+public class MagicProgressCircle extends View implements ISmoothTarget {
 
     // ColorInt
     private int startColor;
@@ -48,6 +53,7 @@ public class MagicProgressCircle extends View {
     // 用于渐变
     private Paint paint;
 
+    private SmoothHandler smoothHandler;
 
     public MagicProgressCircle(Context context) {
         super(context);
@@ -158,10 +164,24 @@ public class MagicProgressCircle extends View {
         percent = Math.min(1, percent);
         percent = Math.max(0, percent);
 
+        if (smoothHandler != null) {
+            smoothHandler.commitPercent(percent);
+        }
+
         if (this.percent != percent) {
             this.percent = percent;
             invalidate();
         }
+
+    }
+
+    @Override
+    public void setSmoothPercent(float percent) {
+        if (smoothHandler == null) {
+            smoothHandler = new SmoothHandler(new WeakReference<ISmoothTarget>(this));
+        }
+
+        smoothHandler.loopSmooth(percent);
     }
 
     public float getPercent() {
