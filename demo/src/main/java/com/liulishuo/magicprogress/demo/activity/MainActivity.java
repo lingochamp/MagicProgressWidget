@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
 
         float mpcPercent = getIncreasedPercent(demoMpc);
         demoMpc.setSmoothPercent(mpcPercent);
-        demoTv.setText(String.valueOf((int) (mpcPercent * 100)));
+        demoTv.setSmoothPercent(mpcPercent);
         demo1Mpb.setSmoothPercent(getIncreasedPercent(demo1Mpb));
         demo2Mpb.setSmoothPercent(getIncreasedPercent(demo2Mpb));
         demo3Mpb.setSmoothPercent(getIncreasedPercent(demo3Mpb));
