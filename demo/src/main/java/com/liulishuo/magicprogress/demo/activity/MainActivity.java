@@ -39,16 +39,17 @@ public class MainActivity extends AppCompatActivity {
     private final Random random = new Random();
 
     private void anim() {
-        final int progress = random.nextInt(51);
+        final int ceil = 26;
+        final int progress = random.nextInt(ceil);
 
         AnimatorSet set = new AnimatorSet();
         set.playTogether(
                 ObjectAnimator.ofFloat(demoMpc, "percent", 0, progress / 100f),
                 ObjectAnimator.ofInt(demoTv, "progress", 0, progress),
-                ObjectAnimator.ofFloat(demo1Mpb, "percent", 0, random.nextInt(51) / 100f),
-                ObjectAnimator.ofFloat(demo2Mpb, "percent", 0, random.nextInt(51) / 100f),
-                ObjectAnimator.ofFloat(demo3Mpb, "percent", 0, random.nextInt(51) / 100f),
-                ObjectAnimator.ofFloat(demo4Mpb, "percent", 0, random.nextInt(51) / 100f)
+                ObjectAnimator.ofFloat(demo1Mpb, "percent", 0, random.nextInt(ceil) / 100f),
+                ObjectAnimator.ofFloat(demo2Mpb, "percent", 0, random.nextInt(ceil) / 100f),
+                ObjectAnimator.ofFloat(demo3Mpb, "percent", 0, random.nextInt(ceil) / 100f),
+                ObjectAnimator.ofFloat(demo4Mpb, "percent", 0, random.nextInt(ceil) / 100f)
         );
         set.setDuration(600);
         set.addListener(new Animator.AnimatorListener() {
