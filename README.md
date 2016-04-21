@@ -41,7 +41,8 @@ compile 'com.liulishuo.magicprogresswidget:library:1.0.9'
 
 #### 1. Magic Progress Circle
 
-> 支持平滑过渡: `setSmoothPercent(percent:float):void`
+- 支持平滑过渡: `setSmoothPercent(percent:float):void`
+- 支持指定时间的平滑过渡: `setSmoothPercent(percent:float, durationMillis:long):void`
 
 | 参数 | 含义 | 默认值 |
 | :--- | :--- | :--- |
