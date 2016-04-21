@@ -93,7 +93,8 @@ public class MainActivity extends AppCompatActivity {
         float mpcPercent = getIncreasedPercent(demoMpc);
         demoMpc.setSmoothPercent(mpcPercent);
         demoTv.setSmoothPercent(mpcPercent);
-        demo1Mpb.setSmoothPercent(getIncreasedPercent(demo1Mpb));
+        // Just for demo smoothly process to the target percent in 3000ms duration.
+        demo1Mpb.setSmoothPercent(getIncreasedPercent(demo1Mpb), 3000);
         demo2Mpb.setSmoothPercent(getIncreasedPercent(demo2Mpb));
         demo3Mpb.setSmoothPercent(getIncreasedPercent(demo3Mpb));
         demo4Mpb.setSmoothPercent(getIncreasedPercent(demo4Mpb));
