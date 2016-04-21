@@ -157,10 +157,19 @@ public class MagicProgressBar extends View implements ISmoothTarget {
 
     @Override
     public void setSmoothPercent(float percent) {
+        getSmoothHandler().loopSmooth(percent);
+    }
+
+    @Override
+    public void setSmoothPercent(float percent, long durationMillis) {
+        getSmoothHandler().loopSmooth(percent, durationMillis);
+    }
+
+    private SmoothHandler getSmoothHandler() {
         if (smoothHandler == null) {
             smoothHandler = new SmoothHandler(new WeakReference<ISmoothTarget>(this));
         }
-        smoothHandler.loopSmooth(percent);
+        return smoothHandler;
     }
 
     /**
