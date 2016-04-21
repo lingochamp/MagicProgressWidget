@@ -55,8 +55,8 @@ compile 'com.liulishuo.magicprogresswidget:library:1.0.9'
 
 > 相比系统的ProgressBar更加轻量，如果你的ProgressBar要求不是很复杂，推荐使用
 
-> 支持平滑过渡: `setSmoothPercent(percent:float):void`
-> 支持指定时间的平滑过渡: `setSmoothPercent(percent:float, durationMillis:long):void`
+- 支持平滑过渡: `setSmoothPercent(percent:float):void`
+- 支持指定时间的平滑过渡: `setSmoothPercent(percent:float, durationMillis:long):void`
 
 | 参数 | 含义 | 默认值 |
 | :--- | :--- | :--- |
