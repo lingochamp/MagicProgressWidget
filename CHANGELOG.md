@@ -1,6 +1,12 @@
 # Change Log
 ---
 
+## Version 1.0.9
+
+_2016-04-21_
+
+- `MagicProgressBar`与`MagicProgressCircle`添加Smooth-Progress-Duration功能: `setSmoothPercent(percent:float, durationMillis:long):void`，可以在指定时间范围内平滑的滚动到指定的百分比
+
 ## Version 1.0.8
 
 - `MagicProgressBar`与`MagicProgressCircle`添加Smooth-Progress功能: `setSmoothPercent(percent:float):void`
