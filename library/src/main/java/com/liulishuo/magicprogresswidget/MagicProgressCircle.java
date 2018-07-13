@@ -25,11 +25,9 @@ import android.graphics.RectF;
 import android.graphics.SweepGradient;
 import android.os.Build;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 
 import java.lang.ref.WeakReference;
-import java.util.Arrays;
 
 import cn.dreamtobe.percentsmoothhandler.ISmoothTarget;
 import cn.dreamtobe.percentsmoothhandler.SmoothHandler;
