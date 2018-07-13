@@ -292,7 +292,6 @@ public class MagicProgressCircle extends View implements ISmoothTarget {
      */
     public void setFootOverHead(boolean footOverHead) {
         this.isFootOverHead = footOverHead;
-        invalidate();
     }
 
     public boolean isFootOverHead() {
