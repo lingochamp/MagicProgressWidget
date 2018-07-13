@@ -25,9 +25,11 @@ import android.graphics.RectF;
 import android.graphics.SweepGradient;
 import android.os.Build;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import java.lang.ref.WeakReference;
+import java.util.Arrays;
 
 import cn.dreamtobe.percentsmoothhandler.ISmoothTarget;
 import cn.dreamtobe.percentsmoothhandler.SmoothHandler;
@@ -185,7 +187,7 @@ public class MagicProgressCircle extends View implements ISmoothTarget {
         getSmoothHandler().loopSmooth(percent, durationMillis);
     }
 
-    private SmoothHandler getSmoothHandler(){
+    private SmoothHandler getSmoothHandler() {
         if (smoothHandler == null) {
             smoothHandler = new SmoothHandler(new WeakReference<ISmoothTarget>(this));
         }
@@ -361,22 +363,22 @@ public class MagicProgressCircle extends View implements ISmoothTarget {
         canvas.restore();
 
         if (drawPercent > 0) {
+            boolean isFinish = drawPercent == 1;
 
             // 绘制结束的半圆
-            if (drawPercent < 1) {
+//            if (drawPercent < 1) {
                 canvas.save();
                 endPaint.setColor(percentEndColor);
                 canvas.rotate((int) Math.floor(360.0f * drawPercent) - 1, cx, cy);
                 canvas.drawArc(rectF, -90f, 180f, true, endPaint);
                 canvas.restore();
+//            }
+            if (!isFinish) {
+                canvas.save();
+                // 绘制开始的半圆
+                canvas.drawArc(rectF, 90f, 180f, true, startPaint);
+                canvas.restore();
             }
-
-
-            canvas.save();
-            // 绘制开始的半圆
-            canvas.drawArc(rectF, 90f, 180f, true, startPaint);
-            canvas.restore();
-
         }
 
 
