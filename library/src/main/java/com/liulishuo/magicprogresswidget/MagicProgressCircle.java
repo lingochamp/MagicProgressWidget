@@ -57,6 +57,8 @@ public class MagicProgressCircle extends View implements ISmoothTarget {
 
     private SmoothHandler smoothHandler;
 
+    private boolean isFootOverHead = false;
+
     public MagicProgressCircle(Context context) {
         super(context);
         init(context, null);
@@ -131,7 +133,6 @@ public class MagicProgressCircle extends View implements ISmoothTarget {
         endPaint.setStyle(Paint.Style.FILL);
 
         refreshDelta();
-
 
 
         customColors = new int[]{startColor, percentEndColor, defaultColor, defaultColor};
@@ -287,6 +288,17 @@ public class MagicProgressCircle extends View implements ISmoothTarget {
         return this.strokeWidth;
     }
 
+    /**
+     * @param footOverHead Boolean
+     */
+    public void setFootOverHead(boolean footOverHead) {
+        isFootOverHead = footOverHead;
+    }
+
+    public boolean isFootOverHead() {
+        return isFootOverHead;
+    }
+
     private int deltaR, deltaB, deltaG;
     private int startR, startB, startG;
 
@@ -363,17 +375,15 @@ public class MagicProgressCircle extends View implements ISmoothTarget {
         canvas.restore();
 
         if (drawPercent > 0) {
-            boolean isFinish = drawPercent == 1;
-
             // 绘制结束的半圆
-//            if (drawPercent < 1) {
+            if (drawPercent < 1 || (isFootOverHead && drawPercent == 1)) {
                 canvas.save();
                 endPaint.setColor(percentEndColor);
                 canvas.rotate((int) Math.floor(360.0f * drawPercent) - 1, cx, cy);
                 canvas.drawArc(rectF, -90f, 180f, true, endPaint);
                 canvas.restore();
-//            }
-            if (!isFinish) {
+            }
+            if (!isFootOverHead || drawPercent < 1) {
                 canvas.save();
                 // 绘制开始的半圆
                 canvas.drawArc(rectF, 90f, 180f, true, startPaint);
