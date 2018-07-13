@@ -55,6 +55,8 @@ public class MagicProgressCircle extends View implements ISmoothTarget {
 
     private SmoothHandler smoothHandler;
 
+    private boolean isFootOverHead;
+
     public MagicProgressCircle(Context context) {
         super(context);
         init(context, null);
@@ -102,6 +104,7 @@ public class MagicProgressCircle extends View implements ISmoothTarget {
                 startColor = typedArray.getColor(R.styleable.MagicProgressCircle_mpc_start_color, getResources().getColor(R.color.mpc_start_color));
                 endColor = typedArray.getColor(R.styleable.MagicProgressCircle_mpc_end_color, getResources().getColor(R.color.mpc_end_color));
                 defaultColor = typedArray.getColor(R.styleable.MagicProgressCircle_mpc_default_color, getResources().getColor(R.color.mpc_default_color));
+                isFootOverHead = typedArray.getBoolean(R.styleable.MagicProgressCircle_mpc_foot_over_head, false);
             } finally {
                 if (typedArray != null) {
                     typedArray.recycle();
@@ -129,7 +132,6 @@ public class MagicProgressCircle extends View implements ISmoothTarget {
         endPaint.setStyle(Paint.Style.FILL);
 
         refreshDelta();
-
 
 
         customColors = new int[]{startColor, percentEndColor, defaultColor, defaultColor};
@@ -185,7 +187,7 @@ public class MagicProgressCircle extends View implements ISmoothTarget {
         getSmoothHandler().loopSmooth(percent, durationMillis);
     }
 
-    private SmoothHandler getSmoothHandler(){
+    private SmoothHandler getSmoothHandler() {
         if (smoothHandler == null) {
             smoothHandler = new SmoothHandler(new WeakReference<ISmoothTarget>(this));
         }
@@ -285,6 +287,20 @@ public class MagicProgressCircle extends View implements ISmoothTarget {
         return this.strokeWidth;
     }
 
+    /**
+     * @param footOverHead Boolean
+     */
+    public void setFootOverHead(boolean footOverHead) {
+        if (this.isFootOverHead != footOverHead) {
+            this.isFootOverHead = footOverHead;
+            invalidate();
+        }
+    }
+
+    public boolean isFootOverHead() {
+        return isFootOverHead;
+    }
+
     private int deltaR, deltaB, deltaG;
     private int startR, startB, startG;
 
@@ -361,22 +377,20 @@ public class MagicProgressCircle extends View implements ISmoothTarget {
         canvas.restore();
 
         if (drawPercent > 0) {
-
             // 绘制结束的半圆
-            if (drawPercent < 1) {
+            if (drawPercent < 1 || (isFootOverHead && drawPercent == 1)) {
                 canvas.save();
                 endPaint.setColor(percentEndColor);
                 canvas.rotate((int) Math.floor(360.0f * drawPercent) - 1, cx, cy);
                 canvas.drawArc(rectF, -90f, 180f, true, endPaint);
                 canvas.restore();
             }
-
-
-            canvas.save();
-            // 绘制开始的半圆
-            canvas.drawArc(rectF, 90f, 180f, true, startPaint);
-            canvas.restore();
-
+            if (!isFootOverHead || drawPercent < 1) {
+                canvas.save();
+                // 绘制开始的半圆
+                canvas.drawArc(rectF, 90f, 180f, true, startPaint);
+                canvas.restore();
+            }
         }
 
 
