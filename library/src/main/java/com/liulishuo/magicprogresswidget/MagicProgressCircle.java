@@ -106,6 +106,7 @@ public class MagicProgressCircle extends View implements ISmoothTarget {
                 startColor = typedArray.getColor(R.styleable.MagicProgressCircle_mpc_start_color, getResources().getColor(R.color.mpc_start_color));
                 endColor = typedArray.getColor(R.styleable.MagicProgressCircle_mpc_end_color, getResources().getColor(R.color.mpc_end_color));
                 defaultColor = typedArray.getColor(R.styleable.MagicProgressCircle_mpc_default_color, getResources().getColor(R.color.mpc_default_color));
+                isFootOverHead = typedArray.getBoolean(R.styleable.MagicProgressCircle_mpc_foot_over_head, false);
             } finally {
                 if (typedArray != null) {
                     typedArray.recycle();

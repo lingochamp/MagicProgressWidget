@@ -7,6 +7,8 @@
         <attr name="mpc_end_color" format="color" />
         <!-- 背景环的颜色 -->
         <attr name="mpc_default_color" format="color" />
+        <!-- 圆弧: 结尾是否覆盖开始 -->
+        <attr name="mpc_foot_over_head" format="boolean"/>
     </declare-styleable>
 
     <declare-styleable name="MagicProgressBar">
