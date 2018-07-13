@@ -1,10 +1,7 @@
 package com.liulishuo.magicprogress.demo.widget;
 
-import android.annotation.TargetApi;
 import android.content.Context;
-import android.os.Build;
 import android.util.AttributeSet;
-import android.widget.TextView;
 
 import java.lang.ref.WeakReference;
 
@@ -14,7 +11,7 @@ import cn.dreamtobe.percentsmoothhandler.SmoothHandler;
 /**
  * Created by Jacksgong on 12/11/15.
  */
-public class AnimTextView extends TextView implements ISmoothTarget {
+public class AnimTextView extends android.support.v7.widget.AppCompatTextView implements ISmoothTarget {
     private SmoothHandler smoothHandler;
 
     public AnimTextView(Context context) {
@@ -27,11 +24,6 @@ public class AnimTextView extends TextView implements ISmoothTarget {
 
     public AnimTextView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-    }
-
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public AnimTextView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
     }
 
     private int progress;
