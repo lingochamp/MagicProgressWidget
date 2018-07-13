@@ -55,7 +55,7 @@ public class MagicProgressCircle extends View implements ISmoothTarget {
 
     private SmoothHandler smoothHandler;
 
-    private boolean isFootOverHead = false;
+    private boolean isFootOverHead;
 
     public MagicProgressCircle(Context context) {
         super(context);
