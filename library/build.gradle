@@ -16,10 +16,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
 }
 
 dependencies {
-    compile 'cn.dreamtobe.percentsmoothhandler:library:0.1.1'
+    api 'cn.dreamtobe.percentsmoothhandler:library:0.1.1'
 }
 
 if (isForUpload2Maven()) {
