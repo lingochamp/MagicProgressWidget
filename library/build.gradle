@@ -2,7 +2,6 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion COMPILE_SDK_VERSION as int
-    buildToolsVersion BUILD_TOOLS_VERSION
 
     defaultConfig {
         minSdkVersion 3
@@ -16,10 +15,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    buildToolsVersion '27.0.3'
 }
 
 dependencies {
-    compile 'cn.dreamtobe.percentsmoothhandler:library:0.1.1'
+    api 'cn.dreamtobe.percentsmoothhandler:library:0.1.1'
 }
 
 if (isForUpload2Maven()) {
