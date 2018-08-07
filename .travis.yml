@@ -4,7 +4,7 @@ android:
   components:
     - platform-tools
     - build-tools-27.0.3
-    - android-23
+    - android-27
     - extra
 
 after_script:
