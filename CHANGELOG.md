@@ -1,6 +1,12 @@
 # Change Log
 ---
 
+## Version 1.1.0
+
+_2018-08-07_
+
+- Add `foot_over_head` for support close MagicProgressCircle foot above head
+
 ## Version 1.0.9
 
 _2016-04-21_
