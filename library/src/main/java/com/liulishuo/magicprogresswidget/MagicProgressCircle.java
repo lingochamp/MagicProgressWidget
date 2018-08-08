@@ -364,6 +364,7 @@ public class MagicProgressCircle extends View implements ISmoothTarget {
             customPositions[2] = drawPercent;
             positions = customPositions;
         } else if (drawPercent == 1) {
+            percentEndColor = endColor;
             colors = fullColors;
             positions = extremePositions;
         } else {

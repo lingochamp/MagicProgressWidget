@@ -51,6 +51,7 @@ implementation 'com.liulishuo.magicprogresswidget:library:1.1.0'
 | mpc_start_color | 渐变颜色起点颜色(percent=0) | <font color="#FF00FFED">#FF00FFED</font> |
 | mpc_end_color | 渐变颜色终点颜色(percent=1) | <font color="#FFED00FF">#FFED00FF</font> |
 | mpc_default_color | 未填充部分的描边的颜色 | <font color="#1AFFFFFF">#1AFFFFFF</font> |
+| mpc_foot_over_head | 结尾的圆弧是否覆盖开始的圆弧 | false |
 
 #### 2. Magic Progress Bar
 
