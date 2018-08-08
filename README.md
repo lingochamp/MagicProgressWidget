@@ -14,7 +14,7 @@
 `build.gradle`中配置:
 
 ```
-implementation 'com.liulishuo.magicprogresswidget:library:1.1.0'
+implementation 'com.liulishuo.magicprogresswidget:library:1.1.1'
 ```
 
 > 建议参考github中的demo

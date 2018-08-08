@@ -1,6 +1,12 @@
 # Change Log
 ---
 
+## Version 1.1.1
+
+_2018-08-08_
+
+- Fix the circle close arc become lucency when set percent >=1 directly
+
 ## Version 1.1.0
 
 _2018-08-07_
